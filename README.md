@@ -1,0 +1,1 @@
+# self-webpack-analytics-lib
