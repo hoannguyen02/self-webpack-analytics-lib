@@ -7,16 +7,12 @@
     <title>Analytics Lib example</title>
   </head>
   <body>
-    <h2 style="text-align: center;">Welcome to analytics lib example!</h2>
+    <h2 style="text-align: center;">Welcome to GTM lib example!</h2>
     <button onclick="onClickMe()">Click Me</button>
     <button onclick="onClickOthers()">Click Others</button>
     <script>
-      var events = [{ name: 'onClickMe' }, { name: 'onClickOthers' }];
-      // Configuration must be include GTM_ID, events are optional
-      var config = { GTM_ID: 'GTM-N5BDZTD', events: events };
       window.onload = function() {
-        RubrikkGTM.config(config);
-        RubrikkGTM.init();
+        RubrikkGTM.config('GTM-N5BDZTD');
       };
     </script>
   </body>

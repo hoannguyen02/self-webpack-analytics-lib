@@ -60,30 +60,35 @@ var RubrikkGTM = (function(e) {
       n.d(t, 'config', function() {
         return o;
       }),
-      n.d(t, 'init', function() {
+      n.d(t, 'trigger', function() {
         return a;
       });
-    var r = {};
+    var r = '';
     function o(e) {
-      r = e;
+      (r = e),
+        i(),
+        'loading' === document.readyState
+          ? window.attachEvent
+            ? window.attachEvent('onload', u())
+            : window.addEventListener('load', u())
+          : u();
     }
-    function a() {
-      if (r && (0 !== Object.entries(r).length || r.constructor !== Object)) {
-        var e = r,
-          t = e.GTM_ID;
-        e.events;
-        t &&
-          ('loading' === document.readyState
-            ? window.attachEvent
-              ? window.attachEvent('onload', i(t))
-              : window.addEventListener('load', i(t), !1)
-            : i(t));
-      }
+    function a(e) {
+      i(),
+        (window.dataLayer = window.dataLayer || []),
+        window.dataLayer.push(e);
     }
-    function i(e) {
-      var t = document.createElement('script'),
-        n = (function(e) {
-          return (function(e, t, n, r, o) {
+    function i() {
+      if (!r) throw Error('GTM ID is invalid, please check again');
+    }
+    function u() {
+      if (
+        !document.querySelector(
+          'script[src$="https://www.googletagmanager.com/gtm.js?id="]'
+        )
+      ) {
+        var e = document.createElement('script'),
+          t = (function(e, t, n, r, o) {
             (e[r] = e[r] || []),
               e[r].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
             var a = t.getElementsByTagName(n)[0],
@@ -91,21 +96,9 @@ var RubrikkGTM = (function(e) {
             (i.async = !0),
               (i.src = 'https://www.googletagmanager.com/gtm.js?id=' + o),
               a.parentNode.insertBefore(i, a);
-          })(window, document, 'script', 'dataLayer', e);
-        })(e);
-      (t.text = n),
-        document.head.appendChild(t),
-        t.remove(),
-        Array.isArray(events) &&
-          events.length > 0 &&
-          (function(e) {
-            e.map(function(e) {
-              return (window[e.name] = function() {
-                (window.dataLayer = window.dataLayer || []),
-                  window.dataLayer.push({ event: e.name });
-              });
-            });
-          })(events);
+          })(window, document, 'script', 'dataLayer', r);
+        (e.text = t), document.head.appendChild(e), e.remove();
+      }
     }
   },
 ]);
