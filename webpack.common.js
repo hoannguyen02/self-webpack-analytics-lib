@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/index.js',
+    'single-spa.config': './single-spa.config.js',
   },
   plugins: [
     new CleanWebpackPlugin(),

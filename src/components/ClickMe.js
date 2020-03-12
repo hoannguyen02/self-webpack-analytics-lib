@@ -4,9 +4,12 @@ const ClickMe = () => {
   const [title, setTitle] = useState('Click Me');
   const onClickMe = () => {
     setTitle('Click Me Again');
-    RubrikkGTM.trigger({ event: 'onClickMe' });
   };
-  return <button onClick={onClickMe}>{title}</button>;
+  return (
+    <button className="gtm-click-me" onClick={onClickMe}>
+      {title}
+    </button>
+  );
 };
 
 export default ClickMe;
